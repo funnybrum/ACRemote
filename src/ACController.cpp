@@ -1,13 +1,8 @@
 #include "ACController.h"
 
 
-IRsend irsend(D2);
-
-
 void setup(void)
 { 
-    irsend.begin();
-
     Serial.begin(9600);
 
     // Connect to WiFi

@@ -15,5 +15,4 @@ class WebServer {
       void handle_off();
 };
 
-
 #endif

@@ -1,5 +1,9 @@
 {
     "terminal.integrated.env.osx": {
         "PATH": "/Users/brum/.platformio/penv/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+    },
+    "files.associations": {
+        "array": "cpp",
+        "initializer_list": "cpp"
     }
 }
