@@ -6,6 +6,9 @@
 #include <IRRemote.h>
 #include "Secrets.h"
 
+#define IR_REMOTE_PIN D2
+
 WebServer webServer = WebServer();
+IRRemote irRemote = IRRemote(IR_REMOTE_PIN);
 
 #endif

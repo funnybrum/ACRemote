@@ -6,9 +6,11 @@
 
 class IRRemote {
     public:
-        void begin(uint16_t irSendPin);
+        IRRemote(uint16_t irSendPin);
+        void begin();
     private:
         IRsend *_irSend;
+        uint16_t _irSendPin;
 };
 
 #endif
