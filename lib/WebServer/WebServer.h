@@ -11,8 +11,9 @@ class WebServer {
       ESP8266WebServer *_server;
       
       void handle_root();
-      void handle_on();
-      void handle_off();
+      void handle_getCommands();
+      void handle_exec();
+      void handle_getPower();
 };
 
 #endif
