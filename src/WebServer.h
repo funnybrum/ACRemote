@@ -14,6 +14,7 @@ class WebServer {
       void handle_getCommands();
       void handle_exec();
       void handle_getPower();
+      void handle_execIR();
 };
 
 #endif

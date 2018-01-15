@@ -1,5 +1,4 @@
 #include "IRRemote.h"
-#include "IRCommands.cpp"
 
 IRRemote::IRRemote(uint16_t irSendPin) {
     _irSendPin = irSendPin;
