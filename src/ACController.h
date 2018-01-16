@@ -2,13 +2,15 @@
 #define _ACCCONTROLLER_H_
 
 #include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
+#include <IRsend.h>
+#include <ArduinoJson.h>
+
 #include "WebServer.h"
 #include "IRRemote.h"
-#include "Secrets.h"
 
 #define IR_REMOTE_PIN D2
 
-WebServer webServer = WebServer();
-IRRemote irRemote = IRRemote(IR_REMOTE_PIN);
+#define MAX_IR_COMMAND_LENGTH 320
 
 #endif

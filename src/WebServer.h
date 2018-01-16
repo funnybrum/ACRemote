@@ -1,7 +1,7 @@
 #ifndef _WEBSERVER_H_
 #define _WEBSERVER_H_
 
-#include <ESP8266WebServer.h>
+#include "ACController.h"
 
 class WebServer {
     public:
@@ -11,10 +11,10 @@ class WebServer {
       ESP8266WebServer *_server;
       
       void handle_root();
-      void handle_getCommands();
       void handle_exec();
       void handle_getPower();
-      void handle_execIR();
 };
+
+extern WebServer webServer;
 
 #endif
