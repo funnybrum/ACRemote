@@ -27,32 +27,43 @@ void WebServer::handle_getPower() {
         "Not Implemented yet");
 }
 
+/**
+ * Expect POST call with body like:
+ * {
+ *   "command": [10,100,10,......],
+ *   "frequency": 38
+ * }
+ * The command and freqency parameters are as defined by the IRremoteESP8266 library. Both are
+ * passed as arguments to the IRSend functionality. The content type should be 'application/json'
+ */
 void WebServer::handle_exec() {
     if (_server->hasArg("plain")== false) {
         //Check if there is a body.
-        _server->send(400);
+        _server->send(400, "Body not received");
     	return;
     }
 
-    String body = _server->arg("plain");
-    DynamicJsonBuffer jsonBuffer(8192);
-    JsonObject& root = jsonBuffer.parse(body);
+    DynamicJsonBuffer jsonBuffer(JSON_BUFFER_SIZE);
+
+    JsonObject& root = jsonBuffer.parse(_server->arg("plain"));
     if (!root.success()) {
-        _server->send(500);
+        _server->send(400, "Request body too big.");
     }
 
     JsonArray& command = root["command"];
     int rawDataSize = command.size();
 
     if (rawDataSize > MAX_IR_COMMAND_LENGTH) {
-        _server->send(400, "Command length exceeded.");
+        _server->send(400, "Maximum command length exceeded.");
     }
 
     int frequency = root["frequency"];
     uint16_t rawData[MAX_IR_COMMAND_LENGTH];
     command.copyTo(rawData);
 
-    // irRemote.send(rawData, rawDataSize, frequency);
+    jsonBuffer.clear();
+
+    irRemote.send(rawData, rawDataSize, frequency);
 
     _server->send(200);
 }
