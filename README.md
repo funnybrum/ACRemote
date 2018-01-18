@@ -7,7 +7,7 @@ This is implemented in quite generic approach. The IR remote part requires the f
 # Hardware
 The hardware is pretty simple.
 
-The IR remote controlling part is realized with just one IR LED, transistor and few resistors.
+The IR remote controlling part is crafted from single IR LED, transistor and few resistors.
 
 The power meter is just a ACS712 current sensor module.
 
