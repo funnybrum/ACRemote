@@ -56,6 +56,8 @@ void setup()
 
     webServer.begin();
     irRemote.begin();
+    powerMeter.begin();
+
 
     // Use the build in pin for WiFi status feedback.
     pinMode(LED_BUILTIN, OUTPUT);
@@ -81,5 +83,7 @@ void loop() {
     // Serial.println(sum/count);
 
     webServer.loop();
+    irRemote.loop();
+    powerMeter.loop();
     delay(100);
 }

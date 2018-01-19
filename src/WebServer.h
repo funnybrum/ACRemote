@@ -5,6 +5,7 @@
 
 class WebServer {
     public:
+        WebServer(int port);
         void begin();
         void loop();
     private:

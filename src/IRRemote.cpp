@@ -1,12 +1,15 @@
 #include "ACController.h"
 
 IRRemote::IRRemote(uint16_t irSendPin) {
-    _irSendPin = irSendPin;
+    _irSend = new IRsend(irSendPin);
 }
 
 void IRRemote::begin() {
-    _irSend = new IRsend(_irSendPin);
     _irSend->begin();
+}
+
+void IRRemote::loop() {
+    // Dummy method for consistencey between 'modules'.
 }
 
 void IRRemote::send(uint16_t* rawData, uint16_t rawDataSize, uint16_t frequency) {

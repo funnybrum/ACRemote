@@ -1,11 +1,13 @@
 #include "ACController.h"
 
-void WebServer::begin() {
-    _server = new ESP8266WebServer(80);
+WebServer::WebServer(int port) {
+    _server = new ESP8266WebServer(port);
     _server->on("/", std::bind(&WebServer::handle_root, this));
     _server->on("/exec", std::bind(&WebServer::handle_exec, this));
     _server->on("/power", std::bind(&WebServer::handle_getPower, this));
+}
 
+void WebServer::begin() {
     _server->begin();
 }
 
@@ -68,4 +70,4 @@ void WebServer::handle_exec() {
     _server->send(200);
 }
 
-WebServer webServer = WebServer();
+WebServer webServer = WebServer(HTTP_PORT);
