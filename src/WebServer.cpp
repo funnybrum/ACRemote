@@ -1,10 +1,18 @@
 #include "ACController.h"
 
 WebServer::WebServer(int port) {
+
     _server = new ESP8266WebServer(port);
     _server->on("/", std::bind(&WebServer::handle_root, this));
     _server->on("/exec", std::bind(&WebServer::handle_exec, this));
-    _server->on("/power", std::bind(&WebServer::handle_getPower, this));
+    _server->on("/reset", std::bind(&WebServer::handle_reset, this));
+
+    _httpUpdater = new ESP8266HTTPUpdateServer(true);
+    _httpUpdater->setup(_server);
+
+    MDNS.begin(HOSTNAME);
+    MDNS.addService("http", "tcp", 80);
+
 }
 
 void WebServer::begin() {
@@ -19,14 +27,7 @@ void WebServer::handle_root() {
     _server->send(
         200,
         "text/plain",
-        "AC remote.\nExposed endpoints are:\n */exec\n */power");
-}
-
-void WebServer::handle_getPower() {
-    _server->send(
-        501,
-        "text/plain",
-        "Not Implemented yet");
+        "AC remote.\nExposed endpoints are:\n */exec\n */update");
 }
 
 /**
@@ -68,6 +69,12 @@ void WebServer::handle_exec() {
     irRemote.send(rawData, rawDataSize, frequency);
 
     _server->send(200);
+}
+
+void WebServer::handle_reset() {
+    _server->send(200);
+    delay(1000);
+    ESP.reset();
 }
 
 WebServer webServer = WebServer(HTTP_PORT);

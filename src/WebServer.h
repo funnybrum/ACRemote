@@ -10,10 +10,11 @@ class WebServer {
         void loop();
     private:
       ESP8266WebServer *_server;
+      ESP8266HTTPUpdateServer *_httpUpdater;
       
       void handle_root();
       void handle_exec();
-      void handle_getPower();
+      void handle_reset();
 };
 
 extern WebServer webServer;

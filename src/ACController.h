@@ -3,6 +3,8 @@
 
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
+#include <ESP8266HTTPUpdateServer.h>
+#include <ESP8266mDNS.h>
 #include <IRsend.h>
 #include <ArduinoJson.h>
 
@@ -10,6 +12,7 @@
 #include "IRRemote.h"
 
 #define HTTP_PORT 80
+#define HOSTNAME "sp-ac-remote"
 
 #define IR_REMOTE_PIN D2
 #define POWER_METER_PIN A0
