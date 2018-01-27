@@ -22,7 +22,7 @@ The hardware is pretty simple. ESP8266 with IR LED, transistor and few resistors
 
 There is also OTA support. The module is designed to be put inside the air conditiner near the IR receiver. Most ACs are powering the IR receiver unit with 5V and this offers quite suitable extension point.
 
-![](./images/schematic.png) { width: 200px; }
+<img src="./images/schematic.png" width="180" height="203" />
 
 
 The schematic above should be descriptive enough.
