@@ -45,4 +45,6 @@ The unit is finally assembled in a ready to use version and is mounted in a Pana
 2. OTA firmware upgrade:
 > curl -F "image=@.pioenvs/d1_mini/firmware.bin" 192.168.0.44/update
 
-Next step - put the same device in a Toshiba RAS-10SKVP2-E. And implement /sleep endpoint so the WiFi electromagnetic radiation can be reduced while the room is in use and the WiFi remote functionality is not needed.
+Another unit was placed inside a Toshiba RAS-10SKVP2-E. The IR receiver of the Toshiba had some issues - if the IR LED was too close it was failing to receive the command. If the LED was moved 20cm away - it was working. Tried different current through the LED - same story. So - I removed the LED and connected the collector of the transistor that was driving it directly to the output of the IR receiver. Voilà - it worked.
+
+Next step - implement /sleep that can shutdown the module for specified time. The WiFi electromagnetic radiation can be reduced while the room is in use and the WiFi remote functionality is not needed.
