@@ -48,9 +48,6 @@ void setup()
 
     webServer.begin();
     irRemote.begin();
-
-    // Use the build in pin for WiFi status feedback.
-    pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {

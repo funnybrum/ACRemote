@@ -8,6 +8,8 @@
 #include <IRsend.h>
 #include <ArduinoJson.h>
 
+#include "user_interface.h"
+
 #include "WebServer.h"
 #include "IRRemote.h"
 
@@ -17,7 +19,7 @@
 #define IR_REMOTE_PIN D2
 #define POWER_METER_PIN A0
 
-#define MAX_IR_COMMAND_LENGTH 300
+#define MAX_IR_COMMAND_LENGTH 450
 #define JSON_BUFFER_SIZE JSON_ARRAY_SIZE(MAX_IR_COMMAND_LENGTH) + JSON_OBJECT_SIZE(2) + 1400
 
 #endif
