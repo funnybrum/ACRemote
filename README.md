@@ -27,6 +27,11 @@ There is also OTA support. The module is designed to be put inside the air condi
 
 The schematic above should be descriptive enough.
 
+## Required libraries
+You need the following libraries installed in order to compile the code:
+* ArduinoJson
+* IRremoteESP8266
+
 ## Update log
 
 ### 25 January 2018
